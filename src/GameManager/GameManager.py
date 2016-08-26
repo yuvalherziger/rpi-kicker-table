@@ -40,7 +40,7 @@ class GameManager:
 
     def __init__(self):
         # load physical I/O configurations:
-        with open("../config/config.json") as config_file:
+        with open("../../config/config.json") as config_file:
             self.physical_config = json.load(config_file)
 
         GPIO.setmode(GPIO.BCM)
