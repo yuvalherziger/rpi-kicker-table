@@ -22,6 +22,8 @@ class GameManager:
     goal_from_left = None
     goal_from_right = None
 
+    game = None
+
     vector_by_digit = {
             ' ': (0, 0, 0, 0, 0, 0, 0),
             '0': (1, 1, 1, 1, 1, 1, 0),
@@ -50,6 +52,8 @@ class GameManager:
 
         for goal in physical_config["display"]:
             GPIO.setup(goal["outputPin"], GPIO.OUT)
+
+        self.game = Game({ "defence": "",  "team_a_offence": ""})
 
     def run(self):
         while True:
