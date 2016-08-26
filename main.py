@@ -11,10 +11,10 @@ for button in physical_config["buttons"]:
     GPIO.setup(button["inputPin"], GPIO.IN, pull_up_down = GPIO.PUD_UP)
 
 for motion_sensor in physical_config["motionSensors"]:
-    GPIO.setup(motion_sensor["inputPin"], GPIO.IN, pull_up_down = GPIO.PUD_UP)
+    GPIO.setup(motion_sensor["inputPin"], GPIO.IN)
 
 for goal in physical_config["display"]:
-    GPIO.setup(goal["outputPin"], GPIO.OUT)physical_config["display"]    
+    GPIO.setup(goal["outputPin"], GPIO.OUT)
 
 vector_by_digit = {
         ' ': (0, 0, 0, 0, 0, 0, 0),
