@@ -4,7 +4,7 @@ import time
 from pprint import pprint
 
 # load physical I/O configurations:
-with open("/home/pi/kicker-goal-detector/config.json") as config_file:
+with open("../config/config.json") as config_file:
     physical_config = json.load(config_file)
 
 for button in physical_config["buttons"]:
