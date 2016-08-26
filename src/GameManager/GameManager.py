@@ -52,8 +52,18 @@ class GameManager:
 
         for goal in physical_config["display"]:
             GPIO.setup(goal["outputPin"], GPIO.OUT)
+        
 
-        self.game = Game({ "defence": "",  "team_a_offence": ""})
+        team_a = {
+            "defense": "<playerId>",
+            "offense": "<playerId>"
+            }
+        team_a = {
+            "defense": "<playerId>",
+            "offense": "<playerId>"
+            }
+        
+        self.game = Game(team_a, team_b)
 
     def run(self):
         while True:
