@@ -7,6 +7,7 @@ from pprint import pprint
 with open("../config/config.json") as config_file:
     physical_config = json.load(config_file)
 
+GPIO.setmode(GPIO.BCM)
 for button in physical_config["buttons"]:
     GPIO.setup(button["inputPin"], GPIO.IN, pull_up_down = GPIO.PUD_UP)
 
@@ -36,35 +37,38 @@ right_score = 0
 last_increment = ""
 
 def do_reset_match():
-    global team_a_score
-    global team_b_score
-    team_a_score = 0
-    team_b_score = 0
+    global right_score
+    global left_score
+    right_score = 0
+    left_score = 0
     print("Resetting the match")
-    print("Current score: Team A - 0:0 - Team B")
+    print("Current score: Left - 0:0 - Right")
     time.sleep(0.4)
 
 def do_cancel_last_increment():
-    global team_a_score
-    global team_b_score
-    if last_increment == "LEFT":
-        team_a_score -= 1
+    global right_score
+    global left_score
     if last_increment == "RIGHT":
-        team_b_score -= 1
+        right_score -= 1
+    if last_increment == "LEFT":
+        left_score -= 1
     print("Current score: Left - " + `left_score` + ":" + `right_score` + " - Right")
     time.sleep(1)
 
 def do_increment_goal(team):
-    print(team)
+    global right_score
+    global left_score
+    if team == "RIGHT":
+        right_score += 1
+    if team == "LEFT":
+        left_score += 1
+    last_increment = team
 
-def end_match:
+# TODO implement
+def do_end_match:
     print("ending match")
 
-GPIO.setmode(GPIO.BCM)
-GPIO.setup(reset_match_button_pin, GPIO.IN, pull_up_down = GPIO.PUD_UP)
-GPIO.setup(cancel_last_increment_button_pin, GPIO.IN, pull_up_down = GPIO.PUD_UP)
-
-while True:    
+while True:
     reset_match             = GPIO.input(physical_config["buttons"]["resetMatch"]["inputPin"])
     submit_match            = GPIO.input(physical_config["buttons"]["submitMatch"]["inputPin"])
     sugmit_game             = GPIO.input(physical_config["buttons"]["submitGame"]["inputPin"])
@@ -74,18 +78,15 @@ while True:
     goal_from_left          = GPIO.input(physical_config["motionSensors"]["rightGoal"]["inputPin"])
     goal_from_right         = GPIO.input(physical_config["motionSensors"]["leftGoal"]["inputPin"])
 
-    # listen to the sensors:
+    # listen to sensors:
     if goal_from_right == 1:
         do_increment_goal("RIGHT")
     if goal_from_left == 1:
         do_increment_goal("LEFT")
 
-    
+    # listen to buttons:
     if cancel_last_increment == False:
         do_cancel_last_increment()
-        
+
     if reset_match == False:
         do_reset_match()
-    
-    
-
