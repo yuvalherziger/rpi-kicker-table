@@ -1,3 +1,6 @@
+import sys
+sys.path.append('../..')
+
 import RPi.GPIO as GPIO
 import time
 import pygame
@@ -30,31 +33,31 @@ while True:
     
     if input_1 == False:
         print('1 Pressed')
-        media_manager.play("../media/button_1.mp3")
+        media_manager.play("../../../media/button_1.mp3")
         time.sleep(1)
 
     if input_2 == False:
         print('2 Pressed')
-        media_manager.play("../media/button_2.mp3")
+        media_manager.play("../../../media/button_2.mp3")
         time.sleep(0.2)
 
     if input_3 == False:
         print('3 Pressed')
-        media_manager.play("../media/button_3.mp3")
+        media_manager.play("../../../media/button_3.mp3")
         time.sleep(0.2)
 
     if input_4 == False:
         print('4 Pressed')
-        media_manager.play("../media/button_4.mp3")
+        media_manager.play("../../../media/button_4.mp3")
         time.sleep(0.2)
 
     if input_5 == False:
         print('5 Pressed')
-        media_manager.play("../media/button_5.mp3")
+        media_manager.play("../../../media/button_5.mp3")
         time.sleep(0.2)
 
     if input_6 == False:
         print('6 Pressed')
-        media_manager.play("../media/button_6.mp3")
+        media_manager.play("../../../media/button_6.mp3")
         time.sleep(0.2)
     
