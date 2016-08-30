@@ -1,0 +1,62 @@
+{
+	"database": {
+		"host": "",
+		"port": "",
+		"username": "",
+		"password": "",
+		"database": ""
+	},
+	"buttons": {
+		"resetMatch": {
+			"inputPin": 4
+		},
+		"submitMatch": {
+			"inputPin": 5
+		},
+		"submitGame": {
+			"inputPin": 16
+		},
+		"cancelLastMove": {
+			"inputPin": 25
+		},
+		"incrementLeftGoal": {
+			"inputPin": 23
+		},
+		"incrementRightGoal": {
+			"inputPin": 24
+		}
+	},
+	"motionSensors": {
+		"rightGoal": {
+			"inputPin": 6
+		},
+		"leftGoal": {
+			"inputPin": 13
+		}
+	},
+	"display": {
+		"rightGoal": {
+			"outputPin": 20
+		},
+		"leftGoal": {
+			"outputPin": 21
+		}
+	},
+	"media": {
+		"goalScored": {
+			"right": [],
+			"left": []
+		},
+		"cancelLastMove": {
+			"right": [],
+			"left": []
+		},
+		"submitMatch": {
+			"right": [],
+			"left": []
+		},
+		"submitGame": [],
+		"startMatch": [],
+		"startGame": []
+	}
+}
